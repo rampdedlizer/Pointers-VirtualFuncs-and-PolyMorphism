@@ -1,0 +1,64 @@
+#include<iostream>
+
+
+class shape
+{
+protected:
+	int a, b;
+public:
+	void getdata(int x, int y)
+	{
+		a = x;
+		b = y;
+	}
+	virtual void display() = 0;
+		
+};
+
+class triangle :public shape
+{
+public:
+	void display()
+	{
+		std::cout << "Area of triangle : "<<((1/2)*(a* b)) << std::endl;
+	}
+};
+
+class rectangle :public shape
+{
+public:
+	void display()
+	{
+		std::cout << "Area of rectangle : " << (a * b) << std::endl;
+	}
+};
+
+
+int main()
+{
+	int a, b;
+	
+	std::cout << "Enter a : ";
+	std::cin >> a;
+	
+	std::cout << "Enter b: ";
+	std::cin >> b;
+	
+	shape* ptr[2];
+
+	triangle t1;
+	
+	ptr[0] = &t1;
+
+	ptr[0]->getdata(a,b);
+	
+	rectangle r1;
+
+	ptr[1] = &r1;
+	ptr[1]->getdata(a,b);
+
+	ptr[0]->display();
+	ptr[1]->display();
+
+
+}
